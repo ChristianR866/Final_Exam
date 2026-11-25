@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saffron &amp; Salt Kitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F8F7;--ink:#1B2A5C;--muted:#4A5578;--saffron:#F4B223;--tomato:#C8381F;--deep:#1B2A5C;--on-deep:#F6F8F7;--paper:#FFFFFF;--line:#C9D0DE;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root{--bg:#0F1733;--ink:#EEF1F5;--muted:#A9B4D0;--tomato:#FF8A6B;--deep:#0A1128;--paper:#17214A;--line:#33407A;color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 "Hanken Grotesk",system-ui,sans-serif}
+h1,h2,h3,.logo,.fbrand{font-family:"Young Serif",Georgia,serif;font-weight:400;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tomato);outline-offset:3px}
+main:focus{outline:none}
+.skip{position:absolute;left:-9999px;top:0;background:var(--bg);color:var(--ink);padding:12px 16px;z-index:10}
+.skip:focus{left:8px;top:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+header{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;justify-content:space-between;max-width:1080px;margin:0 auto;padding:22px clamp(20px,5vw,40px)}
+.logo{font-size:1.5rem;text-decoration:none}
+nav{display:flex;flex-wrap:wrap;gap:6px 22px}
+nav a{padding:6px 2px;text-decoration:none;font-weight:500}
+nav a:hover{text-decoration:underline;text-underline-offset:6px}
+nav a[aria-current="page"]{text-decoration:underline;text-decoration-color:var(--saffron);text-decoration-thickness:5px;text-underline-offset:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+.view{padding:48px 0 88px}
+#home{padding:0}
+.rest{padding-bottom:88px}
+.wrap>h1{font-size:clamp(2.4rem,6vw,4rem);margin-bottom:14px}
+.lead{max-width:34em;color:var(--muted);font-size:1.2rem;margin:0 0 44px}
+.band{background:var(--saffron);color:#1B2A5C;padding:48px 0 72px;overflow:hidden}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,7vw,4.8rem);letter-spacing:-.02em}
+.hero p{max-width:30em;font-size:1.2rem;margin:22px 0 30px}
+.btn{display:inline-block;background:var(--saffron);color:#1B2A5C;padding:13px 24px;border-radius:6px;font:700 1rem "Hanken Grotesk",sans-serif;text-decoration:none;border:2px solid #1B2A5C;cursor:pointer}
+.btn:hover{background:#1B2A5C;color:#F6F8F7}
+.hero .btn{margin:0 12px 12px 0;background:#1B2A5C;color:#F6F8F7}
+.hero .btn.alt{background:transparent;color:#1B2A5C}
+.hero .btn:hover{background:#F6F8F7;color:#1B2A5C}
+.board{background:#1B2A5C;color:#F6F8F7;padding:26px 28px;border-radius:6px;transform:rotate(1.8deg)}
+.board h2{font-size:1.6rem}
+.board small{opacity:.85}
+.board ul{list-style:none;margin:14px 0 0;padding:0}
+.board li{display:flex;gap:12px;align-items:baseline;padding:12px 0;border-top:1px dashed rgba(246,248,247,.35)}
+.board .d{flex:1}
+.board b{font:400 1.2rem "Young Serif",Georgia,serif;color:var(--saffron)}
+.fig{max-width:420px;margin:64px 0 0;background:var(--paper);padding:12px 12px 10px;transform:rotate(-1.2deg);box-shadow:0 8px 24px rgba(10,17,40,.18)}
+.fig img{display:block;width:100%;height:auto}
+.fig figcaption{padding-top:10px;font-size:.95rem;color:var(--muted)}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:72px}
+.strip h3{font-size:1.4rem;margin-bottom:6px}
+.strip p{margin:0;color:var(--muted)}
+.mcats{display:grid;grid-template-columns:1fr 1fr;gap:8px 56px}
+.mcat h2{font-size:1.7rem;margin:28px 0 4px;padding-bottom:8px;border-bottom:3px solid var(--saffron)}
+.mlist{list-style:none;margin:0;padding:0}
+.mlist li{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px dotted var(--line)}
+.mbody{flex:1;min-width:0}
+.mrow{display:flex;gap:12px;align-items:baseline;font-weight:700}
+.mn{display:flex;flex:1;gap:12px;align-items:baseline}
+.mn::after{content:"";flex:1;border-bottom:1px dotted var(--muted)}
+.mlist p{margin:4px 0 0;color:var(--muted);font-size:.95rem}
+.tag{display:inline-block;background:var(--saffron);color:#1B2A5C;padding:0 10px;border-radius:99px;font-size:.78rem;font-weight:500;margin:6px 6px 0 0}
+.ph{flex:none;position:relative;width:88px;height:88px;border-radius:8px;background:rgba(244,178,35,.22);display:grid;place-items:center;font-size:.75rem;color:var(--muted);overflow:hidden}
+.ph::after{content:"Photo"}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.mnote{margin-top:40px;padding:16px 20px;background:var(--paper);border-radius:6px}
+.svc article{display:grid;grid-template-columns:1fr 1.6fr 10em;gap:8px 32px;padding:26px 0;border-top:1px solid var(--line);align-items:baseline}
+.svc article:last-child{border-bottom:1px solid var(--line)}
+.svc h3{font-size:1.6rem}
+.svc p{margin:0;color:var(--muted)}
+.svc .price{font-weight:700;color:var(--tomato);text-align:right}
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}
+.about p{margin:0 0 18px;max-width:34em}
+.pull{align-self:start;background:var(--saffron);color:#1B2A5C;padding:32px;border-radius:6px;font:400 clamp(1.5rem,3vw,2.1rem)/1.25 "Young Serif",Georgia,serif}
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:56px}
+.info p{margin:0 0 20px}
+.info b{display:block;font:400 1.15rem "Young Serif",Georgia,serif}
+form{display:grid;gap:18px;background:var(--paper);padding:28px;border-radius:6px}
+label{display:grid;gap:4px;font-weight:500}
+input,select,textarea{font:inherit;padding:10px 0;border:0;border-bottom:2px solid var(--ink);border-radius:0;background:transparent;color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--tomato)}
+#ok{padding:14px 16px;background:var(--saffron);color:#1B2A5C;border-radius:6px}
+#ok:empty{display:none}
+footer{background:var(--deep);color:var(--on-deep);padding:56px clamp(20px,5vw,40px) 28px;overflow-wrap:anywhere}
+.fgrid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.1fr .7fr .9fr 1.5fr;gap:40px}
+.fbrand{font-size:1.4rem;margin-bottom:10px}
+footer h2{font-size:1.15rem;margin-bottom:12px}
+footer p{margin:0;max-width:30ch;opacity:.9}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin-bottom:6px}
+footer a{display:inline-block;padding:4px 0;text-decoration:none}
+footer a:hover{text-decoration:underline}
+.fbar{max-width:1080px;margin:40px auto 0;padding-top:20px;border-top:1px solid rgba(246,248,247,.25);font-size:.9rem;opacity:.85}
+@media (max-width:760px){.hero,.about,.contact,.strip,.mcats{grid-template-columns:1fr}.svc article{grid-template-columns:1fr}.svc .price{text-align:left}.fgrid{grid-template-columns:1fr 1fr}.fgrid>div:first-child,.fgrid>div:last-child{grid-column:1/-1}.ph{width:72px;height:72px}.board{transform:rotate(1deg)}}
+.view{display:none}.view.on{display:block}
+</style>
+<noscript><style>.view{display:block!important}</style></noscript>
+</head>
+<body>
+<a class="skip" id="skip" href="#main">Skip to main content</a>
+<header>
+<a class="logo" href="#home">Saffron &amp; Salt Kitchen</a>
+<nav aria-label="Main">
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<main id="main" tabindex="-1">
+<section class="view" id="home">
+<div class="band"><div class="wrap"><div class="hero">
+<div>
+<h1>Fish stew, adobo and bread that’s still warm.</h1>
+<p>Everything is cooked in our kitchen on Market Street. Eat here, take it home, or have us cater your party.</p>
+<a class="btn" href="#menu">Order online</a><a class="btn alt" href="#contact">Book catering</a>
+</div>
+<aside class="board" aria-label="Today’s menu">
+<h2>Today’s board</h2><small>Changes daily, sold until it’s gone</small>
+<ul>
+<li><span class="d">Slow-braised chicken adobo with garlic rice</span><b><span class="sr">Price </span>$9</b></li>
+<li><span class="d">Saffron fish stew with warm bread</span><b><span class="sr">Price </span>$12</b></li>
+<li><span class="d">Roasted vegetable lasagna</span><b><span class="sr">Price </span>$10</b></li>
+<li><span class="d">Salted caramel flan</span><b><span class="sr">Price </span>$4</b></li>
+</ul>
+</aside>
+</div>
+</div></div>
+<div class="wrap rest"><figure class="fig"><img src="ai_gen_6717c342-0cc8-4030-9175-fe76de7a4b96.jpg" alt="A fish stew"><figcaption>Our most-ordered dish: saffron fish stew with warm bread.</figcaption></figure>
+<div class="strip">
+<div><h3>Made from scratch</h3><p>Stocks, sauces and breads are made in our kitchen, not bought in.</p></div>
+<div><h3>Sourced nearby</h3><p>Produce and fish come from farms and docks within a short drive.</p></div>
+<div><h3>Built around you</h3><p>Vegetarian, halal and allergy-friendly menus on request.</p></div>
+</div>
+</div>
+</section>
+<section class="view" id="menu"><div class="wrap">
+<h1>Menu</h1>
+<p class="lead">Our regular menu, cooked fresh every day. Today’s specials are on the home page.</p>
+<div class="mcats">
+<div class="mcat"><h2>Mains</h2><ul class="mlist">
+<li data-name="Chicken adobo with garlic rice" data-price="9"><span class="ph"><img src="images (1).jpg" alt="Photo of Chicken adobo with garlic rice" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Chicken adobo with garlic rice</span><span><span class="sr">Price </span>$9</span></div><p>Slow-braised in soy, vinegar and bay leaf.</p></div></li>
+<li data-name="Saffron fish stew" data-price="12"><span class="ph"><img src="images (2).jpg" alt="Photo of Saffron fish stew" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Saffron fish stew</span><span><span class="sr">Price </span>$12</span></div><p>Fresh catch in saffron broth with tomato and warm bread.</p></div></li>
+<li data-name="Roasted vegetable lasagna" data-price="10"><span class="ph"><img src="images (3).jpg" alt="Photo of Roasted vegetable lasagna" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Roasted vegetable lasagna</span><span><span class="sr">Price </span>$10</span></div><p>Zucchini, eggplant, ricotta and basil. <span class="tag">Vegetarian</span></p></div></li>
+<li data-name="Herb-roasted chicken" data-price="11"><span class="ph"><img src="images (4).jpg" alt="Photo of Herb-roasted chicken" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Herb-roasted chicken</span><span><span class="sr">Price </span>$11</span></div><p>Half chicken with lemon, thyme and roast potatoes. <span class="tag">Gluten-free</span></p></div></li>
+</ul></div>
+<div class="mcat"><h2>Soups and sides</h2><ul class="mlist">
+<li data-name="Tomato basil soup" data-price="5"><span class="ph"><img src="images (5).jpg" alt="Photo of Tomato basil soup" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Tomato basil soup</span><span><span class="sr">Price </span>$5</span></div><p>Slow-roasted tomatoes, basil and a drizzle of olive oil. <span class="tag">Vegetarian</span></p></div></li>
+<li data-name="Chicken noodle soup" data-price="5"><span class="ph"><img src="images (6).jpg" alt="Photo of Chicken noodle soup" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Chicken noodle soup</span><span><span class="sr">Price </span>$5</span></div><p>Clear broth, hand-cut noodles and fresh herbs.</p></div></li>
+<li data-name="Charred greens" data-price="3"><span class="ph"><img src="images (7).jpg" alt="Photo of Charred greens" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Charred greens</span><span><span class="sr">Price </span>$3</span></div><p>Seasonal greens with garlic and lemon. <span class="tag">Vegetarian</span> <span class="tag">Gluten-free</span></p></div></li>
+<li data-name="Warm bread and butter" data-price="2"><span class="ph"><img src="bread.jpeg" alt="Photo of Warm bread and butter" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Warm bread and butter</span><span><span class="sr">Price </span>$2</span></div><p>Baked in our kitchen each morning. <span class="tag">Vegetarian</span></p></div></li>
+</ul></div>
+<div class="mcat"><h2>Desserts</h2><ul class="mlist">
+<li data-name="Salted caramel flan" data-price="4"><span class="ph"><img src="images.jpg" alt="Photo of Salted caramel flan" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Salted caramel flan</span><span><span class="sr">Price </span>$4</span></div><p>Silky custard with a salted caramel top. <span class="tag">Gluten-free</span></p></div></li>
+<li data-name="Dark chocolate cake" data-price="5"><span class="ph"><img src="Chocolate-Ganache-Cake-5-1-500x500.webp" alt="Photo of Dark chocolate cake" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Dark chocolate cake</span><span><span class="sr">Price </span>$5</span></div><p>Rich and moist, served with cream. <span class="tag">Vegetarian</span></p></div></li>
+<li data-name="Seasonal fruit crumble" data-price="5"><span class="ph"><img src="images (11).jpg" alt="Photo of Seasonal fruit crumble" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Seasonal fruit crumble</span><span><span class="sr">Price </span>$5</span></div><p>Baked fruit with a buttery oat topping. <span class="tag">Vegetarian</span></p></div></li>
+</ul></div>
+<div class="mcat"><h2>Drinks</h2><ul class="mlist">
+<li data-name="Fresh lemonade" data-price="3"><span class="ph"><img src="images (8).jpg" alt="Photo of Fresh lemonade" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Fresh lemonade</span><span><span class="sr">Price </span>$3</span></div><p>Squeezed to order.</p></div></li>
+<li data-name="Iced tea" data-price="3"><span class="ph"><img src="images (9).jpg" alt="Photo of Iced tea" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Iced tea</span><span><span class="sr">Price </span>$3</span></div><p>Brewed daily, lightly sweetened.</p></div></li>
+<li data-name="Brewed coffee" data-price="2.50"><span class="ph"><img src="images (10).jpg" alt="Photo of Brewed coffee" loading="lazy" onerror="this.remove()"></span><div class="mbody"><div class="mrow"><span class="mn">Brewed coffee</span><span><span class="sr">Price </span>$2.50</span></div><p>Medium roast, free refills when you dine in.</p></div></li>
+</ul></div>
+</div>
+<p class="mnote">Please tell us about any food allergies when you order. Menu and prices may change with the season.</p>
+</div></section>
+<section class="view" id="services"><div class="wrap">
+<h1>Services</h1>
+<p class="lead">Pick what fits your day. Every option can be adjusted for dietary needs.</p>
+<div class="svc">
+<article><h3>Dine-in &amp; takeaway</h3><p>Daily menu served from 10 am to 8 pm. Walk in or order ahead and skip the line.</p><span class="price">From $8</span></article>
+<article><h3>Catering</h3><p>Trays and buffet setups for offices, parties and family gatherings of 10 to 300 guests.</p><span class="price">From $14 per guest</span></article>
+<article><h3>Meal prep plans</h3><p>Five lunches or dinners packed weekly, with a new menu each Monday.</p><span class="price">From $45 per week</span></article>
+<article><h3>Private events</h3><p>A chef and team cook on site for weddings, birthdays and tasting dinners.</p><span class="price">Quote on request</span></article>
+</div>
+</div></section>
+<section class="view" id="about"><div class="wrap">
+<h1>About us</h1>
+<p class="lead">A small kitchen that grew from a family table.</p>
+<div class="about">
+<div>
+<p>Saffron &amp; Salt started in 2014 when Christian Rosales began cooking extra portions of her grandmother’s recipes for neighbors. The demand grew faster than the kitchen, so she opened a small shop with two burners and a long counter.</p>
+<p>Today a team of twelve cooks every day with the same rule: if we wouldn’t serve it at our own table, it doesn’t go out. We use fresh ingredients, season carefully and never rush a braise.</p>
+<p>We also send unsold meals to local shelters each evening, so nothing good goes to waste.</p>
+</div>
+<p class="pull">12 years in the neighborhood. Over 200 events a year. Nothing from the freezer.</p>
+</div>
+</div></section>
+<section class="view" id="contact"><div class="wrap">
+<h1>Contact</h1>
+<p class="lead">Ask about a menu, a booking or a quote. We reply within one working day.</p>
+<div class="contact">
+<div class="info">
+<p><b>Address</b>General luna road, baguio city</p>
+<p><b>Phone</b><a href="tel:+63
+  ">+1 000 000 0000</a></p>
+<p><b>Email</b><a href="mailto:hello@saffronandsalt.example">20264990@s.ubaguio.edu</a></p>
+<p><b>Hours</b>Mon to Sat, 10 am to 8 pm<br>Sunday, 10 am to 4 pm</p>
+</div>
+<form id="f">
+<label>Name (required)<input required name="name" autocomplete="name"></label>
+<label>Email (required)<input required type="email" name="email" autocomplete="email"></label>
+<label>I’m asking about<select name="topic"><option>Dine-in or takeaway</option><option>Catering</option><option>Meal prep plans</option><option>Private events</option></select></label>
+<label>Message<textarea rows="4" name="msg"></textarea></label>
+<button class="btn" type="submit">Send message</button>
+<div id="ok" role="status"></div>
+</form>
+</div>
+</div></section>
+</main>
+<footer>
+<div class="fgrid">
+<div><div class="fbrand">Saffron &amp; Salt Kitchen</div><p>Home-style meals cooked from scratch every day, for dine-in, takeaway and events.</p></div>
+<div><h2>Explore</h2><nav aria-label="Footer"><ul><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></nav></div>
+<div><h2>Opening hours</h2><ul><li>Mon to Sat: 10 am to 8 pm</li><li>Sunday: 10 am to 4 pm</li></ul></div>
+<div><h2>Visit or call</h2><ul><li>General Luna Road, Baguio City</li><li><a href="tel:+639123456789">+63 912 345 6789</a></li><li><a href="mailto:20264990@s.ubaguio.edu">20264990@s.ubaguio.edu</a></li></ul></div>
+</div>
+<div class="fbar"><span>© 2026 Saffron &amp; Salt Kitchen. All rights reserved.</span></div>
+</footer>
+<script>
+(function(){
+var views=["home","menu","services","about","contact"],titles={home:"Home",menu:"Menu",services:"Services",about:"About",contact:"Contact"},started=false;
+function show(){
+  var h=(location.hash||"#home").slice(1);if(views.indexOf(h)<0)h="home";
+  views.forEach(function(v){document.getElementById(v).classList.toggle("on",v===h)});
+  document.querySelectorAll("header nav a").forEach(function(a){if(a.getAttribute("href")==="#"+h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  document.title=titles[h]+" | Saffron & Salt Kitchen";
+  var t=document.querySelector("#"+h+" h1");t.setAttribute("tabindex","-1");if(started)t.focus({preventScroll:true});started=true;window.scrollTo(0,0);
+}
+addEventListener("hashchange",show);show();
+document.getElementById("skip").addEventListener("click",function(e){e.preventDefault();var t=document.querySelector(".view.on h1");if(t)t.focus()});
+document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();document.getElementById("ok").textContent="Thanks! Your message is ready. We\u2019ll reply within one working day.";e.target.reset()});
+})();
+</script>
+<script>
+(function () {
+  var KEY = "ssk-cart", EMAIL = "20264990@s.ubaguio.edu", cart = {}, opener = null;
+  try { cart = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { cart = {}; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {} }
+  function money(c) { var n = c / 100; return "$" + (Number.isInteger(n) ? n : n.toFixed(2)); }
+  function count() { return Object.keys(cart).reduce(function (a, k) { return a + cart[k].qty; }, 0); }
+  function total() { return Object.keys(cart).reduce(function (a, k) { return a + cart[k].cents * cart[k].qty; }, 0); }
+  function $(id) { return document.getElementById(id); }
+  function mk(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+
+  var css = ".add,.cartbtn,.cx,.lnk{font:700 .9rem 'Hanken Grotesk',system-ui,sans-serif;cursor:pointer;color:var(--ink);background:transparent;border:2px solid var(--ink);border-radius:6px;padding:6px 14px}" +
+    ".add{margin-top:8px}.add:hover,.cartbtn:hover,.cx:hover{background:var(--saffron);color:#1B2A5C;border-color:#1B2A5C}" +
+    ".cartbtn .n{background:var(--saffron);color:#1B2A5C;border-radius:99px;padding:0 8px;margin-left:6px}" +
+    "#cart-back{position:fixed;inset:0;background:rgba(10,17,40,.55);z-index:50}" +
+    "#cart{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);color:var(--ink);z-index:51;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(10,17,40,.3)}" +
+    "#cart[hidden],#cart-back[hidden]{display:none}" +
+    "#cart .ch{display:flex;justify-content:space-between;align-items:center;padding:20px}#cart .ch h2{font-size:1.6rem}" +
+    "#cart .cb{flex:1;overflow:auto;padding:0 20px 20px}" +
+    ".ci{padding:14px 0;border-bottom:1px dotted var(--muted)}.ci .top{display:flex;justify-content:space-between;gap:12px;font-weight:700}" +
+    ".ci .ctl{display:flex;align-items:center;gap:10px;margin-top:8px}.ci .ctl button{font:700 1rem sans-serif;min-width:36px;height:36px;border:2px solid var(--ink);border-radius:6px;background:transparent;color:var(--ink);cursor:pointer}" +
+    ".ci .ctl .rm{margin-left:auto;border:0;text-decoration:underline;font-weight:500;font-size:.9rem}" +
+    "#cart form{display:grid;gap:14px;margin-top:20px}#cart-done textarea{width:100%;margin-top:10px;border:2px solid var(--ink);padding:8px}" +
+    "#cart .cf{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-top:2px solid var(--ink);font-size:1.2rem}" +
+    ".lnk{border:0;text-decoration:underline;font-weight:500;padding:0}";
+  var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
+
+  var wrap = document.createElement("div");
+  wrap.innerHTML = '<div id="cart-back" hidden></div>' +
+    '<aside id="cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>' +
+    '<div class="ch"><h2 id="cart-title">Your order</h2><button type="button" class="cx">Close</button></div>' +
+    '<div class="cb"><div id="cart-items"></div>' +
+    '<form id="cart-form" hidden>' +
+    '<label>Name (required)<input name="name" required autocomplete="name"></label>' +
+    '<label>Phone (required)<input name="phone" required type="tel" autocomplete="tel"></label>' +
+    '<label>Pickup or delivery<select name="how"><option>Pickup</option><option>Delivery</option></select></label>' +
+    '<label>Pickup time, address and allergies<textarea name="note" rows="3"></textarea></label>' +
+    '<p style="margin:0;color:var(--muted);font-size:.95rem">You pay when you collect or receive your order.</p>' +
+    '<button class="btn" type="submit">Send order by email</button></form>' +
+    '<div id="cart-done" role="status"></div></div>' +
+    '<div class="cf"><span>Subtotal <button type="button" class="lnk" id="cart-clear">Clear cart</button></span><b id="cart-total">$0</b></div></aside>' +
+    '<div class="sr" id="cart-live" role="status" aria-live="polite"></div>';
+  document.body.appendChild(wrap);
+
+  var btn = mk("button", "cartbtn"); btn.type = "button";
+  var header = document.querySelector("header"); if (header) header.appendChild(btn);
+
+  function render() {
+    var keys = Object.keys(cart), box = $("cart-items"); box.textContent = "";
+    if (!keys.length) {
+      var p = mk("p", "", "Your cart is empty. Add dishes from the menu."); box.appendChild(p);
+      var a = mk("a", "", "Go to the menu"); a.href = "#menu"; a.onclick = close; box.appendChild(a);
+    }
+    keys.forEach(function (k) {
+      var it = cart[k], row = mk("div", "ci"), top = mk("div", "top");
+      top.appendChild(mk("span", "", it.name)); top.appendChild(mk("span", "", money(it.cents * it.qty)));
+      var ctl = mk("div", "ctl");
+      var minus = mk("button", "", "\u2212"); minus.type = "button"; minus.setAttribute("aria-label", "Remove one " + it.name);
+      var q = mk("span", "", String(it.qty)); q.setAttribute("aria-label", it.qty + " in cart");
+      var plus = mk("button", "", "+"); plus.type = "button"; plus.setAttribute("aria-label", "Add one more " + it.name);
+      var rm = mk("button", "rm", "Remove"); rm.type = "button"; rm.setAttribute("aria-label", "Remove " + it.name + " from cart");
+      minus.onclick = function () { change(k, -1); }; plus.onclick = function () { change(k, 1); }; rm.onclick = function () { delete cart[k]; update("Removed " + it.name + "."); };
+      ctl.append(minus, q, plus, rm); row.append(top, ctl); box.appendChild(row);
+    });
+    $("cart-form").hidden = !keys.length;
+    $("cart-total").textContent = money(total());
+    btn.textContent = "";
+    btn.append("Cart", Object.assign(mk("span", "n", String(count()))));
+    btn.setAttribute("aria-label", "Open cart, " + count() + (count() === 1 ? " item" : " items"));
+  }
+  function update(msg) { save(); render(); if (msg) $("cart-live").textContent = msg; }
+  function change(k, d) { cart[k].qty += d; if (cart[k].qty < 1) delete cart[k]; update(); }
+
+  document.querySelectorAll(".mlist li[data-name]").forEach(function (li) {
+    var name = li.getAttribute("data-name"), cents = Math.round(parseFloat(li.getAttribute("data-price")) * 100);
+    var b = mk("button", "add", "Add to cart"); b.type = "button"; b.setAttribute("aria-label", "Add " + name + " to cart");
+    b.onclick = function () {
+      if (!cart[name]) cart[name] = { name: name, cents: cents, qty: 0 };
+      cart[name].qty++; update("Added " + name + ". " + count() + " in cart.");
+      b.textContent = "Added"; setTimeout(function () { b.textContent = "Add to cart"; }, 1200);
+    };
+    var body = li.querySelector(".mbody"); if (body) body.appendChild(b);
+  });
+
+  function focusables() { return $("cart").querySelectorAll("button,a[href],input,select,textarea"); }
+  function open() { opener = document.activeElement; $("cart-done").textContent = ""; $("cart").hidden = false; $("cart-back").hidden = false; $("cart").querySelector(".cx").focus(); }
+  function close() { $("cart").hidden = true; $("cart-back").hidden = true; if (opener) opener.focus(); }
+  btn.onclick = open; $("cart-back").onclick = close; $("cart").querySelector(".cx").onclick = close;
+  $("cart-clear").onclick = function () { cart = {}; update("Cart cleared."); };
+  document.addEventListener("keydown", function (e) {
+    if ($("cart").hidden) return;
+    if (e.key === "Escape") { close(); return; }
+    if (e.key === "Tab") {
+      var f = focusables(), first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  $("cart-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = e.target, lines = ["New order", "", "Name: " + f.name.value, "Phone: " + f.phone.value, "Pickup or delivery: " + f.how.value, "Notes: " + (f.note.value || "none"), "", "Items:"];
+    Object.keys(cart).forEach(function (k) { lines.push(cart[k].qty + " x " + cart[k].name + " - " + money(cart[k].cents * cart[k].qty)); });
+    lines.push("", "Total: " + money(total()));
+    var text = lines.join("\n"), done = $("cart-done"); done.textContent = "";
+    done.appendChild(mk("p", "", "Your email app should open with your order. If it doesn\u2019t, copy the order below and send it to " + EMAIL + "."));
+    var ta = mk("textarea", "", ""); ta.readOnly = true; ta.rows = 8; ta.value = text; ta.setAttribute("aria-label", "Order text");
+    var cp = mk("button", "add", "Copy order"); cp.type = "button";
+    cp.onclick = function () { ta.select(); try { navigator.clipboard.writeText(text); } catch (x) { document.execCommand("copy"); } cp.textContent = "Copied"; };
+    done.append(ta, cp);
+    window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("New order") + "&body=" + encodeURIComponent(text);
+  });
+
+  render();
+})();
+
+</script>
+</body>
+</html>

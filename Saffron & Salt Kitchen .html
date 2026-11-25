@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saffron & Salt Kitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f6f0;--surface:#e4ecdf;--ink:#14281d;--muted:#4b5f52;--accent:#c93a24;--accent-ink:#fff;--line:#b9c7b8;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1c15;--surface:#1a2c21;--ink:#eaf2e8;--muted:#a3b8a8;--accent:#ff7a5c;--accent-ink:#1a0a05;--line:#2f4637;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1c15;--surface:#1a2c21;--ink:#eaf2e8;--muted:#a3b8a8;--accent:#ff7a5c;--accent-ink:#1a0a05;--line:#2f4637;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+header{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;padding:20px clamp(20px,5vw,64px);border-bottom:1px solid var(--line)}
+.logo{font:800 1.35rem "Bricolage Grotesque",sans-serif;text-decoration:none}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{padding:8px 14px;border-radius:99px;text-decoration:none;font-weight:500}
+nav a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+main{padding:0 clamp(20px,5vw,64px)}
+.view{display:none;max-width:1080px;margin:0 auto;padding:56px 0 80px}
+.view.on{display:block}
+.hero{display:grid;gap:48px;grid-template-columns:1.2fr 1fr;align-items:start}
+.hero h1{font-size:clamp(2.8rem,8vw,5.6rem);font-weight:800;letter-spacing:-.03em}
+.hero p{max-width:46ch;color:var(--muted);font-size:1.15rem;margin:24px 0 32px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:14px 26px;border-radius:12px;font-weight:700;text-decoration:none;border:0;font:700 1rem "DM Sans",sans-serif;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink);margin-left:8px}
+.board{background:var(--ink);color:var(--bg);border-radius:20px;padding:28px}
+.board h2{font-size:1.5rem;margin-bottom:6px}
+.board small{opacity:.7}
+.board ul{list-style:none;margin:18px 0 0;padding:0}
+.board li{display:flex;gap:10px;align-items:baseline;padding:12px 0;border-top:1px dashed rgba(255,255,255,.3)}
+.board li span.d{flex:1}
+.board li b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.2rem}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:72px;padding-top:32px;border-top:1px solid var(--line)}
+.strip h3{font-size:1.25rem;margin-bottom:8px}
+.strip p{margin:0;color:var(--muted)}
+.view>h1{font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-.02em;margin-bottom:12px}
+.lead{max-width:56ch;color:var(--muted);font-size:1.15rem;margin:0 0 40px}
+.svc{display:grid;gap:0}
+.svc article{display:grid;grid-template-columns:1fr 2fr auto;gap:12px 32px;padding:26px 0;border-top:1px solid var(--line);align-items:baseline}
+.svc article:last-child{border-bottom:1px solid var(--line)}
+.svc h3{font-size:1.5rem}
+.svc p{margin:0;color:var(--muted)}
+.svc .price{font-weight:700;white-space:nowrap}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.about p{margin:0 0 18px;max-width:58ch}
+.facts{background:var(--surface);border-radius:20px;padding:28px;align-self:start}
+.facts div{padding:14px 0;border-top:1px solid var(--line)}
+.facts div:first-child{border:0;padding-top:0}
+.facts b{display:block;font:700 1.9rem "Bricolage Grotesque",sans-serif}
+.facts span{color:var(--muted)}
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:56px}
+.info p{margin:0 0 20px}
+.info b{display:block}
+form{display:grid;gap:16px;background:var(--surface);padding:28px;border-radius:20px}
+label{display:grid;gap:6px;font-weight:500}
+input,select,textarea{font:inherit;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+#ok{padding:14px;background:var(--ink);color:var(--bg)}
+#ok:empty{display:none}
+footer{background:var(--ink);color:var(--bg);padding:56px clamp(20px,5vw,64px) 28px;font-size:.95rem}
+.fgrid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
+footer h3{font-size:1.05rem;margin-bottom:14px}
+footer p{margin:0 0 8px;opacity:.8;max-width:34ch}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin-bottom:8px}
+footer a{opacity:.85;text-decoration:none}
+footer a:hover{opacity:1;text-decoration:underline}
+.fbrand{font:800 1.4rem "Bricolage Grotesque",sans-serif;margin-bottom:12px}
+.fbar{max-width:1080px;margin:40px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.25);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;opacity:.75;font-size:.9rem}
+#skel{display:none;max-width:1080px;margin:0 auto;padding:56px 0 80px}
+body.loading #skel{display:block}
+body.loading .view{display:none!important}
+.sk{background:linear-gradient(90deg,var(--surface) 25%,var(--line) 50%,var(--surface) 75%);background-size:200% 100%;animation:sh 1.2s linear infinite;border-radius:10px}
+@keyframes sh{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.sk{animation:none}}
+.skgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px}
+.skrow{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px}
+@media (max-width:760px){.skgrid{grid-template-columns:1fr}.skrow{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr 1fr}.hero,.about,.contact,.strip{grid-template-columns:1fr}.svc article{grid-template-columns:1fr}.btn.alt{margin:10px 0 0}}
+:root{--bg:#fff;--surface:#fff;--ink:#111;--muted:#555;--accent:#111;--accent-ink:#fff;--line:#111}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0d0d;--surface:#0d0d0d;--ink:#f2f2f2;--muted:#a8a8a8;--accent:#f2f2f2;--accent-ink:#0d0d0d;--line:#f2f2f2}}
+:root[data-theme="dark"]{--bg:#0d0d0d;--surface:#0d0d0d;--ink:#f2f2f2;--muted:#a8a8a8;--accent:#f2f2f2;--accent-ink:#0d0d0d;--line:#f2f2f2}
+*{border-radius:0!important}
+h1,h2,h3,.logo,.fbrand,.hero h1,.facts b,.board b{font-weight:500}
+header{border-bottom:1px solid var(--ink)}
+nav a{border:1px solid transparent}
+nav a:hover{border-color:var(--ink);border-style:dashed}
+nav a[aria-current="page"]{background:none;color:var(--ink);border:1px solid var(--ink)}
+.btn,.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--ink);font-weight:500}
+.btn.alt{border-style:dashed}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.board,.facts,form{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.board li{border-top:1px dashed var(--ink)}
+.strip{border-top:1px solid var(--ink);gap:0}
+.strip>div{padding:24px;border:1px solid var(--ink);margin-left:-1px}
+.strip>div:first-child{margin-left:0}
+.facts div{border-top:1px dashed var(--ink)}
+.svc article{border-top:1px dashed var(--ink)}
+.svc article:first-child{border-top:1px solid var(--ink)}
+.svc article:last-child{border-bottom:1px solid var(--ink)}
+input,select,textarea{background:transparent;border:1px solid var(--ink)}
+#ok{background:transparent;color:var(--ink);border:1px dashed var(--ink)}
+footer{background:transparent;color:var(--ink);border-top:1px solid var(--ink)}
+.fbar{border-top:1px dashed var(--ink)}
+.sk{background:none;border:1px dashed var(--ink);animation:none;opacity:.45}
+@media (max-width:760px){.strip>div{margin-left:0;margin-top:-1px}}
+.skip{position:absolute;left:-9999px;top:0;background:var(--bg);color:var(--ink);padding:12px 16px;border:1px solid var(--ink);z-index:10;font-weight:500}
+.skip:focus{left:8px;top:8px}
+h1:focus{outline:none}
+footer a{display:inline-block;padding:4px 0}
+footer h2{font-size:1.05rem;margin-bottom:14px}
+.ico{display:block;width:44px;height:44px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:14px}
+.ico.big{width:80px;height:80px;margin-bottom:20px}
+.svc .ico{display:inline-block;width:34px;height:34px;margin:0 12px -6px 0}
+.fig{max-width:680px;margin:56px auto 0;border:1px solid var(--ink)}
+.fig svg{display:block;width:100%;height:auto}
+.mcats{display:grid;grid-template-columns:1fr 1fr;gap:16px 56px}
+.mcat h2{font-size:1.6rem;padding-bottom:10px;border-bottom:1px solid var(--ink);margin:24px 0 8px}
+.mlist{list-style:none;margin:0;padding:0}
+.mlist li{padding:14px 0;border-bottom:1px dashed var(--ink)}
+.mrow{display:flex;gap:12px;align-items:baseline;font-weight:500}
+.mn{display:flex;flex:1;gap:12px;align-items:baseline}
+.mn::after{content:"";flex:1;border-bottom:1px dotted var(--ink)}
+.mlist p{margin:4px 0 0;color:var(--muted);font-size:.95rem}
+.tag{display:inline-block;border:1px solid var(--ink);color:var(--ink);padding:0 8px;font-size:.8rem;margin:6px 6px 0 0}
+.mnote{margin-top:40px;padding:16px 20px;border:1px dashed var(--ink)}
+@media (max-width:760px){.mcats{grid-template-columns:1fr}}
+.fig figcaption{padding:12px 16px;border-top:1px solid var(--ink);font-size:.95rem;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+<a class="skip" id="skip" href="#main">Skip to main content</a>
+<header>
+<a class="logo" href="#home">Saffron &amp; Salt Kitchen</a>
+<nav aria-label="Main">
+<a href="#home" data-v="home">Home</a>
+<a href="#menu" data-v="menu">Menu</a>
+<a href="#services" data-v="services">Services</a>
+<a href="#about" data-v="about">About</a>
+<a href="#contact" data-v="contact">Contact</a>
+</nav>
+</header>
+<main id="main">
+<div id="skel" aria-hidden="true">
+<div class="skgrid">
+<div><div class="sk" style="height:72px;width:90%;margin-bottom:16px"></div><div class="sk" style="height:72px;width:65%;margin-bottom:32px"></div><div class="sk" style="height:16px;width:80%;margin-bottom:12px"></div><div class="sk" style="height:16px;width:60%;margin-bottom:32px"></div><div class="sk" style="height:48px;width:180px"></div></div>
+<div class="sk" style="height:300px;border-radius:20px"></div>
+</div>
+<div class="skrow"><div class="sk" style="height:90px"></div><div class="sk" style="height:90px"></div><div class="sk" style="height:90px"></div></div>
+</div>
+<section class="view" id="home">
+<div class="hero">
+<div>
+<h1>Cooked this morning. At your table by noon.</h1>
+<p>We make hearty, home-style meals from scratch every day, for dine-in, takeaway and events of any size.</p>
+<a class="btn" href="#contact">Order or book</a><a class="btn alt" href="#menu">See the menu</a>
+</div>
+<aside class="board" aria-label="Today’s menu">
+<h2>Today’s board</h2><small>Changes daily, sold until it’s gone</small>
+<ul>
+<li><span class="d">Slow-braised chicken adobo with garlic rice</span><b><span class="sr">Price </span>$9</b></li>
+<li><span class="d">Saffron fish stew with warm bread</span><b><span class="sr">Price </span>$12</b></li>
+<li><span class="d">Roasted vegetable lasagna</span><b><span class="sr">Price </span>$10</b></li>
+<li><span class="d">Salted caramel flan</span><b><span class="sr">Price </span>$4</b></li>
+</ul>
+</aside>
+</div>
+<figure class="fig"><svg viewBox="0 0 680 420" role="img" aria-label="Illustration of a steaming red bowl of saffron fish stew with parsley, a lemon wedge and a loaf of bread"><rect width="680" height="420" fill="#bcd3b5"/><circle cx="340" cy="210" r="190" fill="#cfe0c8"/><rect y="340" width="680" height="80" fill="#14281d"/><ellipse cx="340" cy="394" rx="175" ry="12" fill="#0a1710" opacity=".55"/><rect x="300" y="366" width="80" height="22" fill="#8f2616"/><path d="M190 250Q192 372 340 374 488 372 490 250Z" fill="#c93a24"/><path d="M205 300Q260 330 340 332 420 330 475 300" fill="none" stroke="#e5604a" stroke-width="6" stroke-linecap="round"/><ellipse cx="340" cy="250" rx="150" ry="34" fill="#a82e1b"/><ellipse cx="340" cy="252" rx="138" ry="28" fill="#e8a33d"/><ellipse cx="300" cy="254" rx="24" ry="10" fill="#f6e9d0"/><ellipse cx="388" cy="260" rx="21" ry="9" fill="#f6e9d0"/><ellipse cx="346" cy="244" rx="19" ry="8" fill="#f4d6b0"/><g fill="#3f8a47"><circle cx="322" cy="262" r="5"/><circle cx="365" cy="252" r="4"/><circle cx="288" cy="240" r="4"/><circle cx="410" cy="248" r="5"/></g><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".9"><path d="M300 200Q280 170 300 145 320 120 300 95"/><path d="M345 205Q325 175 345 150 365 125 345 100"/><path d="M390 200Q370 170 390 145 410 120 390 100"/></g><path d="M82 352A28 28 0 0 1 138 352Z" fill="#f2c94c"/><path d="M94 352A16 16 0 0 1 126 352Z" fill="#fbe58a"/><ellipse cx="570" cy="356" rx="58" ry="24" fill="#c98a42"/><ellipse cx="570" cy="350" rx="52" ry="19" fill="#d9a25b"/><path d="M540 342L552 358M566 338L578 356M592 342L602 357" stroke="#b4722f" stroke-width="4" stroke-linecap="round"/></svg><figcaption>Our most-ordered dish: saffron fish stew with warm bread.</figcaption></figure>
+<div class="strip">
+<div><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 20h32v10a10 10 0 0 1-10 10H18A10 10 0 0 1 8 30z"/><path d="M4 20h4M40 20h4M16 12c0-3 3-3 3-6M26 12c0-3 3-3 3-6"/></svg><h3>Made from scratch</h3><p>Stocks, sauces and breads are made in our kitchen, not bought in.</p></div>
+<div><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38C10 18 22 8 40 8c0 20-10 30-28 30z"/><path d="M10 38L28 20"/></svg><h3>Sourced nearby</h3><p>Produce and fish come from farms and docks within a short drive.</p></div>
+<div><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 40S6 30 6 18a9 9 0 0 1 18-3 9 9 0 0 1 18 3c0 12-18 22-18 22z"/></svg><h3>Built around you</h3><p>Vegetarian, halal and allergy-friendly menus on request.</p></div>
+</div>
+</section>
+
+<section class="view" id="menu">
+<h1>Menu</h1>
+<p class="lead">Our regular menu, cooked fresh every day. Today’s specials are on the home page.</p>
+<div class="mcats">
+<div class="mcat"><h2>Mains</h2><ul class="mlist">
+<li><div class="mrow"><span class="mn">Chicken adobo with garlic rice</span><span><span class="sr">Price </span>$9</span></div><p>Slow-braised in soy, vinegar and bay leaf.</p></li>
+<li><div class="mrow"><span class="mn">Saffron fish stew</span><span><span class="sr">Price </span>$12</span></div><p>Fresh catch in saffron broth with tomato and warm bread.</p></li>
+<li><div class="mrow"><span class="mn">Roasted vegetable lasagna</span><span><span class="sr">Price </span>$10</span></div><p>Zucchini, eggplant, ricotta and basil. <span class="tag">Vegetarian</span></p></li>
+<li><div class="mrow"><span class="mn">Herb-roasted chicken</span><span><span class="sr">Price </span>$11</span></div><p>Half chicken with lemon, thyme and roast potatoes. <span class="tag">Gluten-free</span></p></li>
+</ul></div>
+<div class="mcat"><h2>Soups and sides</h2><ul class="mlist">
+<li><div class="mrow"><span class="mn">Tomato basil soup</span><span><span class="sr">Price </span>$5</span></div><p>Slow-roasted tomatoes, basil and a drizzle of olive oil. <span class="tag">Vegetarian</span></p></li>
+<li><div class="mrow"><span class="mn">Chicken noodle soup</span><span><span class="sr">Price </span>$5</span></div><p>Clear broth, hand-cut noodles and fresh herbs.</p></li>
+<li><div class="mrow"><span class="mn">Charred greens</span><span><span class="sr">Price </span>$3</span></div><p>Seasonal greens with garlic and lemon. <span class="tag">Vegetarian</span> <span class="tag">Gluten-free</span></p></li>
+<li><div class="mrow"><span class="mn">Warm bread and butter</span><span><span class="sr">Price </span>$2</span></div><p>Baked in our kitchen each morning. <span class="tag">Vegetarian</span></p></li>
+</ul></div>
+<div class="mcat"><h2>Desserts</h2><ul class="mlist">
+<li><div class="mrow"><span class="mn">Salted caramel flan</span><span><span class="sr">Price </span>$4</span></div><p>Silky custard with a salted caramel top. <span class="tag">Gluten-free</span></p></li>
+<li><div class="mrow"><span class="mn">Dark chocolate cake</span><span><span class="sr">Price </span>$5</span></div><p>Rich and moist, served with cream. <span class="tag">Vegetarian</span></p></li>
+<li><div class="mrow"><span class="mn">Seasonal fruit crumble</span><span><span class="sr">Price </span>$5</span></div><p>Baked fruit with a buttery oat topping. <span class="tag">Vegetarian</span></p></li>
+</ul></div>
+<div class="mcat"><h2>Drinks</h2><ul class="mlist">
+<li><div class="mrow"><span class="mn">Fresh lemonade</span><span><span class="sr">Price </span>$3</span></div><p>Squeezed to order.</p></li>
+<li><div class="mrow"><span class="mn">Iced tea</span><span><span class="sr">Price </span>$3</span></div><p>Brewed daily, lightly sweetened.</p></li>
+<li><div class="mrow"><span class="mn">Brewed coffee</span><span><span class="sr">Price </span>$2.50</span></div><p>Medium roast, free refills when you dine in.</p></li>
+</ul></div>
+</div>
+<p class="mnote">Please tell us about any food allergies when you order. Menu and prices may change with the season.</p>
+</section>
+
+<section class="view" id="services">
+<h1>Services</h1>
+<p class="lead">Pick what fits your day. Every option can be adjusted for dietary needs.</p>
+<div class="svc">
+<article><h3><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="9"/></svg>Dine-in &amp; takeaway</h3><p>Daily menu served from 10 am to 8 pm. Walk in or order ahead and skip the line.</p><span class="price">From $8</span></article>
+<article><h3><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 32a18 18 0 0 1 36 0z"/><path d="M4 38h40M24 10v4"/></svg>Catering</h3><p>Trays and buffet setups for offices, parties and family gatherings of 10 to 300 guests.</p><span class="price">From $14 per guest</span></article>
+<article><h3><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="12" width="36" height="24"/><path d="M6 24h36M24 12v24"/></svg>Meal prep plans</h3><p>Five lunches or dinners packed weekly, with a new menu each Monday.</p><span class="price">From $45 per week</span></article>
+<article><h3><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l5 14 14 6-14 6-5 14-5-14-14-6 14-6z"/></svg>Private events</h3><p>A chef and team cook on site for weddings, birthdays and tasting dinners.</p><span class="price">Quote on request</span></article>
+</div>
+</section>
+
+<section class="view" id="about">
+<h1>About us</h1>
+<p class="lead">A small kitchen that grew from a family table.</p>
+<div class="about">
+<div>
+<p>Saffron &amp; Salt started in 2014 when Maria Reyes began cooking extra portions of her grandmother’s recipes for neighbors. The demand grew faster than the kitchen, so she opened a small shop with two burners and a long counter.</p>
+<p>Today a team of twelve cooks every day with the same rule: if we wouldn’t serve it at our own table, it doesn’t go out. We use fresh ingredients, season carefully and never rush a braise.</p>
+<p>We also send unsold meals to local shelters each evening, so nothing good goes to waste.</p>
+</div>
+<div class="facts">
+<svg class="ico big" viewBox="0 0 48 48" aria-hidden="true"><path d="M15 30a8 8 0 0 1-2-15.5A9 9 0 0 1 24 7a9 9 0 0 1 11 7.5A8 8 0 0 1 33 30z"/><path d="M15 30v10h18V30M15 35h18"/></svg>
+<div><b>12 years</b><span>cooking for the neighborhood</span></div>
+<div><b>200+</b><span>events catered each year</span></div>
+<div><b>0</b><span>frozen ingredients in our dishes</span></div>
+</div>
+</div>
+</section>
+
+<section class="view" id="contact">
+<h1>Contact</h1>
+<p class="lead">Ask about a menu, a booking or a quote. We reply within one working day.</p>
+<div class="contact">
+<div class="info">
+<p><b>Address</b>24 Market Street, Your City</p>
+<p><b>Phone</b><a href="tel:+10000000000">+1 000 000 0000</a></p>
+<p><b>Email</b><a href="mailto:hello@saffronandsalt.example">hello@saffronandsalt.example</a></p>
+<p><b>Hours</b>Mon to Sat, 10 am to 8 pm<br>Sunday, 10 am to 4 pm</p>
+</div>
+<form id="f">
+<label>Name (required)<input required name="name" autocomplete="name"></label>
+<label>Email (required)<input required type="email" name="email" autocomplete="email"></label>
+<label>I’m asking about<select name="topic"><option>Dine-in or takeaway</option><option>Catering</option><option>Meal prep plans</option><option>Private events</option></select></label>
+<label>Message<textarea rows="4" name="msg"></textarea></label>
+<button class="btn" type="submit">Send message</button>
+<div id="ok" role="status"></div>
+</form>
+</div>
+</section>
+</main>
+<footer>
+<div class="fgrid">
+<div><div class="fbrand">Saffron &amp; Salt Kitchen</div><p>Home-style meals cooked from scratch every day, for dine-in, takeaway and events.</p></div>
+<div><h2>Explore</h2><nav aria-label="Footer"><ul><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></nav></div>
+<div><h2>Opening hours</h2><ul><li>Mon to Sat: 10 am to 8 pm</li><li>Sunday: 10 am to 4 pm</li></ul></div>
+<div><h2>Visit or call</h2><ul><li>24 Market Street, Your City</li><li><a href="tel:+10000000000">+1 000 000 0000</a></li><li><a href="mailto:hello@saffronandsalt.example">hello@saffronandsalt.example</a></li></ul></div>
+</div>
+<div class="fbar"><span>© 2026 Saffron &amp; Salt Kitchen. All rights reserved.</span><span>Made fresh, every day.</span></div>
+</footer>
+<script>
+const views=["home","menu","services","about","contact"];
+const titles={home:"Home",menu:"Menu",services:"Services",about:"About",contact:"Contact"};
+let started=false;
+document.getElementById("skip").addEventListener("click",e=>{e.preventDefault();const t=document.querySelector(".view.on h1");if(t)t.focus()});
+function show(){
+  document.body.classList.add("loading");
+  const m=document.getElementById("main");
+  m.setAttribute("aria-busy","true");
+  const d=matchMedia("(prefers-reduced-motion:reduce)").matches?0:700;
+  setTimeout(()=>{document.body.classList.remove("loading");m.removeAttribute("aria-busy");render()},d);
+}
+function render(){
+  let h=(location.hash||"#home").slice(1);
+  if(!views.includes(h))h="home";
+  views.forEach(v=>document.getElementById(v).classList.toggle("on",v===h));
+  document.querySelectorAll("nav a").forEach(a=>{
+    if(a.dataset.v===h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
+  });
+  window.scrollTo(0,0);
+  document.title=titles[h]+" | Saffron & Salt Kitchen";
+  const t=document.querySelector("#"+h+" h1");
+  t.setAttribute("tabindex","-1");
+  if(started)t.focus({preventScroll:true});
+  started=true;
+}
+addEventListener("hashchange",show);show();
+document.getElementById("f").addEventListener("submit",e=>{
+  e.preventDefault();
+  document.getElementById("ok").textContent="Thanks! Your message is ready. We’ll reply within one working day.";
+  e.target.reset();
+});
+</script>
+</body>
+</html>
